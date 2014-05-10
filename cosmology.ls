@@ -35,9 +35,28 @@ redShift = (x) ->
 D_z = (t0, z) ->
 	return 3 * c * t0 * (1 - (Math.pow 1 + z, -1/2))
 
+#The distance/redshift relation for a dust-dominated universe
+#D - is coordinate now
+#t0 - time at t0
+#a - scale factor
+D = (t0, a) ->
+	return 3 * c * t0 * (1 - Math.pow a, 1/2)
+
+
+#Angular distance 
+#For example
+#R = 5 * (Math.pow 10,4) * 3.26
+#D_0 = 1.7 * Math.pow 10,10
+#z = 5.34
+r_ad = (R, z, D_0) ->
+	return (R * (1 + z)/D_0) * 206625
 value = 
 	a_t:undefined,
 	t:5,
 	t0: 6
 
 redShift(value)
+
+R = 5 * (Math.pow 10,4) * 3.26731499
+D_0 = 1.72473858 * Math.pow 10,10
+console.log r_ad(R, 5.34, D_0)
