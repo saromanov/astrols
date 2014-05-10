@@ -30,7 +30,7 @@ redShift = (x) ->
 	if x.a_t != undefined
 		return (1/x.a_t) - 1
 	else if x.t != undefined && x.t0 != undefined
-		return Math.pow (Math.pow(x.t0/x.t,2)),1/3
+		return Math.pow x.t0/x.t,2/3
 
 D_z = (t0, z) ->
 	return 3 * c * t0 * (1 - (Math.pow 1 + z, -1/2))
@@ -50,13 +50,22 @@ D = (t0, a) ->
 #z = 5.34
 r_ad = (R, z, D_0) ->
 	return (R * (1 + z)/D_0) * 206625
+
+
+#Scale factor for Dust-dominated flat universe
+a_t_dd  = (t) ->
+	return Math.pow (3 * H_0 * t/2),2/3
+
+S = (P,R,k, omega) ->
+	return (P/(4 * Math.PI * (Math.pow R,2) * Math.sin(Math.sqrt(k) * omega))/Math.sqrt(k))
+
+#Time scale
+ts = (t0, t1) -> 
+	return 1 - t1/t0
 value = 
 	a_t:undefined,
 	t:5,
 	t0: 6
 
 redShift(value)
-
-R = 5 * (Math.pow 10,4) * 3.26731499
-D_0 = 1.72473858 * Math.pow 10,10
-console.log r_ad(R, 5.34, D_0)
+console.log a_t_dd(5)
