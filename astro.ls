@@ -163,6 +163,12 @@ class Body
 	cons_angular:(M,R,P) ->
 		return (4 * Math.PI/5) * (M * Math.pow(R,2))/P
 
+	#sidereal period
+	siderealPeriod1:(orbit, synodic) -> 1/orbit - 1/synodic
+
+	siderealPeriod2:(orbit, synodic) -> 1/orbit + 1/synodic
+
+
 
 #Функция скорости звёздообразования(Солпитер) (пс^3/год)
 #0.4 <= M/M_sun <= 10
@@ -178,6 +184,7 @@ class IO
 module.exports = {
 
 }
+
 
 
 

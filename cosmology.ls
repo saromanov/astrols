@@ -59,6 +59,8 @@ a_t_dd  = (t) ->
 S = (P,R,k, omega) ->
 	return (P/(4 * Math.PI * (Math.pow R,2) * Math.sin(Math.sqrt(k) * omega))/Math.sqrt(k))
 
+HubbleLaw = (d) -> H_0 * d
+
 #Time scale
 ts = (t0, t1) -> 
 	return 1 - t1/t0
@@ -68,4 +70,4 @@ value =
 	t0: 6
 
 redShift(value)
-console.log a_t_dd(5)
+console.log HubbleLaw(100)
